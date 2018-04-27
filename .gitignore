@@ -1,3 +1,6 @@
+#Cache
+.idea/caches
+
 # Built application files
 *.apk
 *.ap_
