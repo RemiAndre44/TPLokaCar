@@ -3,6 +3,7 @@ package fr.ecole.eni.tplokacar.database.dao;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import java.util.List;
@@ -10,17 +11,11 @@ import java.util.List;
 import fr.ecole.eni.tplokacar.database.entity.Client;
 
 @Dao
-public interface ClientDAO {
+public interface ClientDAO extends GenericDAO<Client> {
 
-    @Insert
-    void insert(Client client);
+    @Query("SELECT * FROM Client")
+    List<Client> getAll();
 
-    @Insert
-    void insert(List<Client> clients);
-
-    @Update
-    void update(Client client);
-
-    @Delete
-    void delete(Client client);
+    @Query("SELECT * FROM Client WHERE id_client = :id")
+    Client findById(int id);
 }

@@ -27,10 +27,15 @@ public class App extends Application {
         super.onCreate();
 
         // Create db
-        database = Room.databaseBuilder(getApplicationContext(), LokaCarDB.class, LokaCarDB.DATABASE_NAME).build();
+        //
+        // fallbackToDestructiveMigration and new Seed().execute()
+        // need to be commented once in production :3
+        database = Room
+                .databaseBuilder(getApplicationContext(), LokaCarDB.class, LokaCarDB.DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .build();
 
-        // uncomment to reset db
-        //new Seed().execute();
+        new Seed().execute();
 
         instance = this;
     }
