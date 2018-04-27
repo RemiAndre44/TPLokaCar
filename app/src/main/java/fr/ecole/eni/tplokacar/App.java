@@ -2,8 +2,11 @@ package fr.ecole.eni.tplokacar;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
+import android.os.AsyncTask;
 
 import fr.ecole.eni.tplokacar.database.LokaCarDB;
+import fr.ecole.eni.tplokacar.database.Seed;
+import fr.ecole.eni.tplokacar.database.entity.Client;
 
 
 public class App extends Application {
@@ -15,12 +18,19 @@ public class App extends Application {
         return instance;
     }
 
+    public LokaCarDB getDB() {
+        return database;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         // Create db
         database = Room.databaseBuilder(getApplicationContext(), LokaCarDB.class, LokaCarDB.DATABASE_NAME).build();
+
+        // uncomment to reset db
+        //new Seed().execute();
 
         instance = this;
     }
