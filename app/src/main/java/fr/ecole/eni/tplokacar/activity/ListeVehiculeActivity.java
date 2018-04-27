@@ -8,10 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.ecole.eni.tplokacar.App;
 import fr.ecole.eni.tplokacar.R;
+import fr.ecole.eni.tplokacar.database.entity.Vehicule;
 
 public class ListeVehiculeActivity extends AppCompatActivity {
+
+    private List<Vehicule> lstV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +27,9 @@ public class ListeVehiculeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_liste_vehicule);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        lstV= new ArrayList<Vehicule>();
+        ListView lv= findViewById(R.id.listView);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -30,11 +41,18 @@ public class ListeVehiculeActivity extends AppCompatActivity {
             }
         });
 
-        /*AdapterVehicule adapterVehicule = new AdapterVehicule(ListeVehiculeActivity.this,
+        AdapterVehicule adapterVehicule = new AdapterVehicule(ListeVehiculeActivity.this,
                 R.layout.item,
-                listeTruc);
+                lstV);
 
-        lst.setAdapter(adapterVehicule);*/
+        Thread thread= new Thread(){
+            public void run(){
+                lstV =App.get().getDB().vehiculeDAO().selectAll();
+            }
+        };
+
+
+        lv.setAdapter(adapterVehicule);
 
     }
 
