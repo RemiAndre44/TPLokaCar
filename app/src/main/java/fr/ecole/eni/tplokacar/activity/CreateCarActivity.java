@@ -13,7 +13,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.ecole.eni.tplokacar.App;
 import fr.ecole.eni.tplokacar.R;
+import fr.ecole.eni.tplokacar.database.entity.Vehicule;
 
 public class CreateCarActivity extends AppCompatActivity{
 
@@ -73,6 +75,24 @@ public class CreateCarActivity extends AppCompatActivity{
         String plaqueArg = plaque.getText().toString();
         String nbrePlacesArg = nbrePlaces.getText().toString();
         String carbuArg = carburantSpinner.getSelectedItem().toString();
+
+        final Vehicule vehicule = new Vehicule();
+        vehicule.setMarque(marqueArg);
+        vehicule.setModele(modeleArg);
+        vehicule.setPrix(Float.parseFloat(prixArg));
+        vehicule.setPlaque(plaqueArg);
+        vehicule.setNbrePlaces(Integer.parseInt(nbrePlacesArg));
+        vehicule.setCarburant(carbuArg);
+
+        Thread thread;
+
+        thread = new Thread() {
+            public void run (){
+                App.get().getDB().vehiculeDAO().insert(vehicule);
+            }
+        };
+
+        thread.start();
 
     }
 

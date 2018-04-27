@@ -10,4 +10,6 @@ public interface VehiculeDAO extends GenericDAO<Vehicule> {
 
     @Query("DELETE FROM Vehicule")
     void deleteAll();
+
+
 }
