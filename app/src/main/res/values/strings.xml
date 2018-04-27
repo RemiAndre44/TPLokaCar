@@ -5,4 +5,7 @@
     <string name="clients">Clients</string>
     <string name="vehicules">Vehicules</string>
     <string name="title_activity_liste_vehicule">LokaCar</string>
+    <string name="carburant">Carburant</string>
+    <string name="plaque">Plaque d'immatriculation</string>
+    <string name="prix">Prix</string>
 </resources>
