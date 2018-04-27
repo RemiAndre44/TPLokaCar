@@ -18,4 +18,7 @@ public interface ClientDAO extends GenericDAO<Client> {
 
     @Query("SELECT * FROM Client WHERE id_client = :id")
     Client findById(int id);
+
+    @Query("DELETE FROM Client")
+    void deleteAll();
 }

@@ -9,12 +9,11 @@ import java.util.List;
 
 @Dao
 public interface GenericDAO<T> {
+    @Insert
+    long insert(T entity);
 
     @Insert
-    void insert(T entity);
-
-    @Insert
-    void insert(List<T> entities);
+    long[] insert(List<T> entities);
 
     @Delete
     void delete(T entity);
