@@ -7,5 +7,6 @@
     <color name="colorTxt">#ffffff</color>
     <color name="colorPrimary">#484848</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#aae48f</color>
+    <color name="colorItemListe">#cfcfcf</color>
 </resources>

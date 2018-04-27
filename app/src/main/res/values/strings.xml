@@ -4,4 +4,5 @@
     <string name="locations">Locations</string>
     <string name="clients">Clients</string>
     <string name="vehicules">Vehicules</string>
+    <string name="title_activity_liste_vehicule">LokaCar</string>
 </resources>
