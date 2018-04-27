@@ -15,6 +15,8 @@ public class Vehicule {
     private boolean louee;
     private String carburant;
     private int nbrePlaces;
+    private String marque;
+    private String modele;
 
 
     public int getId_vehicule() {
@@ -63,6 +65,22 @@ public class Vehicule {
 
     public void setNbrePlaces(int nbrePlaces) {
         this.nbrePlaces = nbrePlaces;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
+    public String getModele() {
+        return modele;
+    }
+
+    public void setModele(String modele) {
+        this.modele = modele;
     }
 
     @Override
