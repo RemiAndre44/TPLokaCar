@@ -44,8 +44,8 @@ public class AdapterVehicule extends ArrayAdapter<Vehicule>{
         }
 
         Vehicule vehicule = getItem(position);
-        //holder.marque.setText(vehicule.getMarque());
-        //holder.modele.setText(vehicule.getModele);
+        holder.marque.setText(vehicule.getMarque());
+        holder.modele.setText(vehicule.getModele());
 
         return convertView;
     }
