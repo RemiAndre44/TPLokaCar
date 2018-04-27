@@ -1,0 +1,17 @@
+home
+	dashboard stats (CA, loué pas loué, etc)
+	listes vehicules (avec recherche)
+		details
+			locations
+		create
+	listes clients (avec recherche)
+		details
+			locations
+		create
+	liste locations (avec recherche)
+		details
+			client
+			voiture
+		create
+
+
