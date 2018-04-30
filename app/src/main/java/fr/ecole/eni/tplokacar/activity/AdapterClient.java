@@ -12,47 +12,48 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.ecole.eni.tplokacar.R;
+import fr.ecole.eni.tplokacar.database.entity.Client;
 import fr.ecole.eni.tplokacar.database.entity.Vehicule;
 
-public class AdapterVehicule extends ArrayAdapter<Vehicule>{
+public class AdapterClient extends ArrayAdapter<Client> {
 
     private int res;
 
-
-    public AdapterVehicule(@NonNull Context context, int resource, @NonNull List<Vehicule> objects) {
+    public AdapterClient(@NonNull Context context, int resource, @NonNull List<Client> objects) {
         super(context, resource, objects);
 
-        res = resource;
+        this.res= resource;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        ViewHolder holder ;
+        AdapterClient.ViewHolder holder ;
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             convertView = inflater.inflate(res,parent,false);
-            holder= new ViewHolder();
-            holder.marque = convertView.findViewById(R.id.marque);
-            holder.modele = convertView.findViewById(R.id.modele);
+            holder= new AdapterClient.ViewHolder();
+            holder.nom = convertView.findViewById(R.id.nomClient);
+            holder.prenom = convertView.findViewById(R.id.prenomClient);
 
             convertView.setTag(holder);
         }else{
-            holder = (ViewHolder) convertView.getTag();
+            holder = (AdapterClient.ViewHolder) convertView.getTag();
         }
 
-        Vehicule vehicule = getItem(position);
-        holder.marque.setText(vehicule.getMarque());
-        holder.modele.setText(vehicule.getModele());
+        Client client = getItem(position);
+        holder.nom.setText(client.getNom());
+        holder.prenom.setText(client.getPrenom());
 
         return convertView;
     }
 
     static class ViewHolder{
-        TextView marque;
-        TextView modele;
+        TextView nom;
+        TextView prenom;
     }
+
 }

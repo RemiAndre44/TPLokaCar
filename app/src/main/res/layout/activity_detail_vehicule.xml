@@ -18,14 +18,30 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/borderlocation"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/borderdetail"
+        android:padding="5dp"
+        android:layout_marginTop="40dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/marqueVehicule"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:gravity="center"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/modeleVehicule"
-        android:layout_marginTop="60dp"
-        android:textSize="30dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:gravity="center"
         />
 
 
@@ -62,10 +78,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nbPlaces"
+            android:id="@+id/places"
             android:layout_weight="0.7"/>
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:text="@string/plaque"/>
+            android:text="@string/immatriculation"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -96,8 +113,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/prixVehicule"
             android:layout_marginTop="20dp"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textColor="@color/colorListe"/>
 
+    </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -105,10 +125,13 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/loue"
-            android:layout_marginLeft="150dp"/>
+            android:layout_marginTop="40dp"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:background="@color/colorItemListe"/>
 
     </LinearLayout>
 

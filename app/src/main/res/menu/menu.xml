@@ -4,15 +4,11 @@
 
     <item
         android:id="@+id/action_save"
-        android:icon="@android:drawable/ic_menu_save"
-        android:title="save"
+        android:icon="@drawable/home"
+        android:title="back"
+        android:onClick="onClickHome"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_delete"
-        android:icon="@android:drawable/ic_menu_delete"
-        android:title="delete"
-        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_settings"

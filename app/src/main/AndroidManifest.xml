@@ -21,10 +21,12 @@
             android:name=".activity.ListeVehiculeActivity"
             android:label="@string/title_activity_liste_vehicule"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.DetailVehiculeActivity"></activity>
-        <activity android:name=".activity.CreateCarActivity" android:exported="true">
-
-        </activity>
+        <activity android:name=".activity.DetailVehiculeActivity" />
+        <activity
+            android:name=".activity.CreateCarActivity"
+            android:exported="true" />
+        <activity android:name=".activity.ListeClientActivity" />
+        <activity android:name=".activity.DetailClientActivity"></activity>
     </application>
 
 </manifest>
