@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorDetail">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +52,8 @@
             android:layout_margin="5dp"
             android:background="@drawable/borderclients"
             android:text="@string/clients"
-            android:textColor="@color/colorTxt"/>
+            android:textColor="@color/colorTxt"
+            android:onClick="onClickClient"/>
 
         <Button
             android:layout_width="wrap_content"

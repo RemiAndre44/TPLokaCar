@@ -35,4 +35,10 @@ public class HomeActivity extends AppCompatActivity {
     public void onClickHome(MenuItem item) {
         Toast.makeText(HomeActivity.this, "Vous êtes déjà sur la page d'accueil", Toast.LENGTH_SHORT).show();
     }
+
+    public void onClickClient(View view) {
+        Intent intent= new Intent(HomeActivity.this, ListeClientActivity.class);
+
+        startActivity(intent);
+    }
 }
