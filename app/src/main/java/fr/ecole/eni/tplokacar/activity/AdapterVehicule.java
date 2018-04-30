@@ -37,6 +37,7 @@ public class AdapterVehicule extends ArrayAdapter<Vehicule>{
             convertView = inflater.inflate(res,parent,false);
             holder= new ViewHolder();
             holder.marque = convertView.findViewById(R.id.marque);
+            holder.modele = convertView.findViewById(R.id.modele);
 
             convertView.setTag(holder);
         }else{

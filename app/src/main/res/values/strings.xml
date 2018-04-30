@@ -8,4 +8,5 @@
     <string name="carburant">Carburant</string>
     <string name="plaque">Plaque d'immatriculation</string>
     <string name="prix">Prix</string>
+    <string name="immatriculation">Immatriculation</string>
 </resources>
