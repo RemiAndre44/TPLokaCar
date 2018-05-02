@@ -26,7 +26,10 @@
             android:name=".activity.CreateCarActivity"
             android:exported="true" />
         <activity android:name=".activity.ListeClientActivity" />
-        <activity android:name=".activity.DetailClientActivity"></activity>
+        <activity android:name=".activity.DetailClientActivity" />
+        <activity android:name=".activity.CreateClientActivity"  android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>
