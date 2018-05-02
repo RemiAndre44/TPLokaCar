@@ -5,17 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import fr.ecole.eni.tplokacar.R;
 
-public class HomeActivity extends AppCompatActivity {
+public class DetailClientActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_detail_client);
     }
 
     @Override
@@ -25,19 +23,8 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onClickVehicule(View view) {
-        Intent intent = new Intent(HomeActivity.this, ListeVehiculeActivity.class);
-
-        startActivity(intent);
-    }
-
-
     public void onClickHome(MenuItem item) {
-        Toast.makeText(HomeActivity.this, "Vous êtes déjà sur la page d'accueil", Toast.LENGTH_SHORT).show();
-    }
-
-    public void onClickClient(View view) {
-        Intent intent= new Intent(HomeActivity.this, ListeClientActivity.class);
+        Intent intent = new Intent(DetailClientActivity.this, HomeActivity.class);
 
         startActivity(intent);
     }

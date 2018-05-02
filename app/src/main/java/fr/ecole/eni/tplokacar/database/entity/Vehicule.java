@@ -2,9 +2,11 @@ package fr.ecole.eni.tplokacar.database.entity;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 @Entity
-public class Vehicule {
+public class Vehicule implements Parcelable{
 
 
     @PrimaryKey(autoGenerate = true)
@@ -18,6 +20,33 @@ public class Vehicule {
     private String marque;
     private String modele;
 
+
+    public Vehicule(Parcel in) {
+        id_vehicule = in.readInt();
+        prix = in.readFloat();
+        plaque = in.readString();
+        louee = in.readByte() != 0;
+        carburant = in.readString();
+        nbrePlaces = in.readInt();
+        marque = in.readString();
+        modele = in.readString();
+    }
+
+    public static final Creator<Vehicule> CREATOR = new Creator<Vehicule>() {
+        @Override
+        public Vehicule createFromParcel(Parcel in) {
+            return new Vehicule(in);
+        }
+
+        @Override
+        public Vehicule[] newArray(int size) {
+            return new Vehicule[size];
+        }
+    };
+
+    public Vehicule() {
+        
+    }
 
     public int getId_vehicule() {
         return id_vehicule;
@@ -93,5 +122,22 @@ public class Vehicule {
                 ", carburant='" + carburant + '\'' +
                 ", nbrePlaces=" + nbrePlaces +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id_vehicule);
+        dest.writeFloat(prix);
+        dest.writeString(plaque);
+        dest.writeByte((byte) (louee ? 1 : 0));
+        dest.writeString(carburant);
+        dest.writeInt(nbrePlaces);
+        dest.writeString(marque);
+        dest.writeString(modele);
     }
 }

@@ -21,4 +21,7 @@ public interface ClientDAO extends GenericDAO<Client> {
 
     @Query("DELETE FROM Client")
     void deleteAll();
+
+    @Query(("SELECT * FROM Client WHERE nom OR prenom LIKE  :result"))
+    List<Client> findByName(String result);
 }

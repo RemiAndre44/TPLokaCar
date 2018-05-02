@@ -36,6 +36,39 @@ public class Seed extends AsyncTask<Void, Void, String> {
         pierre.setVille("Nantes");
         pierre.setId_client( (int) db.clientDAO().insert(pierre));
 
+        // Create clients;
+        Client lucio = new Client();
+        lucio.setPrenom("Lucio");
+        lucio.setNom("Bukowski");
+        lucio.setAdresse("rue de la plume");
+        lucio.setCodePostal("56 000");
+        lucio.setVille("Vannes");
+        lucio.setId_client(3);
+
+        App.get().getDB().clientDAO().insert(lucio);
+
+        // Create clients;
+        Client jean = new Client();
+        jean.setPrenom("Jean-Claude");
+        jean.setNom("Dus");
+        jean.setAdresse("rue des tombeurs");
+        jean.setCodePostal("33 000");
+        jean.setVille("Bordeaux");
+        jean.setId_client( 4);
+
+        App.get().getDB().clientDAO().insert(jean);
+
+        // Create clients;
+        Client dooz = new Client();
+        dooz.setPrenom("Dooz");
+        dooz.setNom("Kawa");
+        dooz.setAdresse("rue des étoiles du sol");
+        dooz.setCodePostal("67 000");
+        dooz.setVille("Strasbourg");
+        dooz.setId_client( 5);
+
+        App.get().getDB().clientDAO().insert(dooz);
+
         // Create vehicules
         Vehicule pijot = new Vehicule();
         pijot.setLouee(false);

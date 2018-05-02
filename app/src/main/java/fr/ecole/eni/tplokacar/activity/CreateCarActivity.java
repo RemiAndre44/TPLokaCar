@@ -1,8 +1,11 @@
 package fr.ecole.eni.tplokacar.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -36,6 +39,13 @@ public class CreateCarActivity extends AppCompatActivity{
         initComponent();
         createListeCarburant();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //ajoute les entrées de menu_test à l'ActionBar
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     private void initComponent() {
@@ -103,5 +113,11 @@ public class CreateCarActivity extends AppCompatActivity{
         plaque.setText("");
         nbrePlaces.setText("");
         carburantSpinner.setSelection(0);
+    }
+
+    public void onClickHome(MenuItem item) {
+        Intent intent= new Intent(CreateCarActivity.this, HomeActivity.class);
+
+        startActivity(intent);
     }
 }
