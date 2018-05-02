@@ -6,7 +6,11 @@
     <string name="vehicules">Vehicules</string>
     <string name="title_activity_liste_vehicule">LokaCar</string>
     <string name="carburant">Carburant</string>
-    <string name="plaque">Plaque d'immatriculation</string>
     <string name="prix">Prix</string>
     <string name="immatriculation">Immatriculation</string>
+    <string name="prenom"><b>Prenom</b></string>
+    <string name="adresse"><b>Adresse</b></string>
+    <string name="nom"><b>Nom</b></string>
+    <string name="code_postal"><b>Code Postal</b></string>
+    <string name="ville"><b>Ville</b></string>
 </resources>

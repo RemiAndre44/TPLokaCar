@@ -3,6 +3,7 @@ package fr.ecole.eni.tplokacar.activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,6 +67,16 @@ public class ListeClientActivity extends AppCompatActivity {
             }
         });
 
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(ListeClientActivity.this, CreateCarActivity.class);
+
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -95,7 +106,7 @@ public class ListeClientActivity extends AppCompatActivity {
 
         final Thread thread = new Thread(){
             public void run(){
-                lstC = App.get().getDB().clientDAO().findByName(resultat);
+                lstC = App.get().getDB().clientDAO().findByName("%"+resultat+"%");
                 Log.d("Resultat", lstC.toString());
                 Message msg = new Message();
                 msg.what = 2;
