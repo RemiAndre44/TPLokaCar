@@ -56,7 +56,6 @@ public class HomeActivity extends AppCompatActivity {
             } else {
                 //Application suite
             }
-
         }
     }
 

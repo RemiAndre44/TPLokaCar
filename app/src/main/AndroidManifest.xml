@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.ecole.eni.tplokacar"
-    >
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    package="fr.ecole.eni.tplokacar">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".App"
@@ -31,11 +31,16 @@
             android:name=".activity.CreateCarActivity"
             android:exported="true" />
         <activity android:name=".activity.ListeClientActivity" />
-        <activity android:name=".activity.DetailClientActivity"></activity>
-        <activity android:name=".activity.StatsActivity"></activity>
-        <activity android:name=".activity.CreateClientActivity"  android:exported="true">
-
-        </activity>
+        <activity android:name=".activity.DetailClientActivity" />
+        <activity android:name=".activity.StatsActivity" />
+        <activity
+            android:name=".activity.CreateClientActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.DetailLocationActivity"
+            android:exported="true" />
+        <activity android:name=".activity.CameraActivity"
+            android:exported="true" ></activity>
     </application>
 
 </manifest>
