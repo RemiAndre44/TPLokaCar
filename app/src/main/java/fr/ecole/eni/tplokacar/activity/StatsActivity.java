@@ -51,6 +51,8 @@ public class StatsActivity extends ActivityWithMenu {
             if (v.isLouee()) nbLoue++;
         }
 
-        cl.setText(nbLoue + "");
+        int pourcent = (nbLoue * 100) /  vehicules.size();
+
+        cl.setText(nbLoue + " - " + pourcent + "%");
     }
 }

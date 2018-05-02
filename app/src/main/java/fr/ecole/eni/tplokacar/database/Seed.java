@@ -76,6 +76,7 @@ public class Seed extends AsyncTask<Void, Void, String> {
         pijot.setPlaque("CAT-789-BB");
         pijot.setMarque("Peugeot");
         pijot.setModele("106");
+        pijot.setPrix(25);
         pijot.setId_vehicule((int) db.vehiculeDAO().insert(pijot));
 
         Vehicule golf = new Vehicule();
@@ -84,6 +85,7 @@ public class Seed extends AsyncTask<Void, Void, String> {
         golf.setPlaque("LOSER-FIFI-44");
         golf.setMarque("Volkswagen");
         golf.setModele("Golf");
+        golf.setPrix(50);
         db.vehiculeDAO().insert(golf);
 
         golf.setPlaque("SIRAF-BLOCK-MEN");
