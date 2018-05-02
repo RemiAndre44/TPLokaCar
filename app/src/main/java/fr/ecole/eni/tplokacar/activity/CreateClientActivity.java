@@ -12,7 +12,7 @@ import fr.ecole.eni.tplokacar.R;
 import fr.ecole.eni.tplokacar.database.entity.Client;
 
 
-public class CreateClientActivity extends AppCompatActivity {
+public class CreateClientActivity extends ActivityWithMenu {
 
 
     private TextView nom ;
