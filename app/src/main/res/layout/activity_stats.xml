@@ -63,6 +63,24 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="Chiffre d'affaire: " />
+
+        <TextView
+            android:id="@+id/chiffre_affaire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"/>
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
