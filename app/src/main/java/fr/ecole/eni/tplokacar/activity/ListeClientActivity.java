@@ -67,11 +67,17 @@ public class ListeClientActivity extends ActivityWithMenu {
             }
         });
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(ListeClientActivity.this, CreateCarActivity.class);
+
+                startActivity(intent);
+            }
+        });
+    }
 
                 startActivity(intent);
             }
@@ -93,7 +99,7 @@ public class ListeClientActivity extends ActivityWithMenu {
 
         final Thread thread = new Thread(){
             public void run(){
-                lstC = App.get().getDB().clientDAO().findByName(resultat);
+                lstC = App.get().getDB().clientDAO().findByName("%"+resultat+"%");
                 Log.d("Resultat", lstC.toString());
                 Message msg = new Message();
                 msg.what = 2;
