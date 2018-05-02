@@ -1,6 +1,7 @@
 package fr.ecole.eni.tplokacar.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,12 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.ecole.eni.tplokacar.App;
 import fr.ecole.eni.tplokacar.R;
+import fr.ecole.eni.tplokacar.database.entity.Client;
 import fr.ecole.eni.tplokacar.database.entity.Vehicule;
 
 public class CreateCarActivity extends AppCompatActivity{
@@ -94,15 +97,7 @@ public class CreateCarActivity extends AppCompatActivity{
         vehicule.setNbrePlaces(Integer.parseInt(nbrePlacesArg));
         vehicule.setCarburant(carbuArg);
 
-        Thread thread;
-
-        thread = new Thread() {
-            public void run (){
-                App.get().getDB().vehiculeDAO().insert(vehicule);
-            }
-        };
-
-        thread.start();
+        new SaveData().execute(vehicule);
 
     }
 
@@ -119,5 +114,26 @@ public class CreateCarActivity extends AppCompatActivity{
         Intent intent= new Intent(CreateCarActivity.this, HomeActivity.class);
 
         startActivity(intent);
+    }
+
+
+
+    private class SaveData extends AsyncTask<Vehicule, Integer, String> {
+
+        @Override
+        protected String doInBackground(Vehicule... vehicule) {
+            App.get().getDB().vehiculeDAO().insert(vehicule[0]);
+            return "le véhicule est bien enregistré";
+        }
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Toast toast = Toast.makeText(getApplicationContext(),  s, Toast.LENGTH_SHORT);
+            toast.show();
+            cxlForm(findViewById(R.id.view));
+        }
+
     }
 }
