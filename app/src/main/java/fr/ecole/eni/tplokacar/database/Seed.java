@@ -70,7 +70,7 @@ public class Seed extends AsyncTask<Void, Void, String> {
 
         // Create vehicules
         Vehicule pijot = new Vehicule();
-        pijot.setLouee(false);
+        pijot.setLouee(true);
         pijot.setCarburant("diesel");
         pijot.setNbrePlaces(4);
         pijot.setPlaque("CAT-789-BB");
