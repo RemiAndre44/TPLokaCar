@@ -13,4 +13,6 @@
     <string name="nom"><b>Nom</b></string>
     <string name="code_postal"><b>Code Postal</b></string>
     <string name="ville"><b>Ville</b></string>
+    <string name="permission_access_required">L\'accès à l\'appareil photo est nécessaire</string>
+    <string name="ok">OK</string>
 </resources>
