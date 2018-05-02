@@ -46,11 +46,11 @@ public class StatsActivity extends ActivityWithMenu {
         cv.setText(vehicules.size() + "");
 
 
-        int nbLoué = 0;
+        int nbLoue = 0;
         for (Vehicule v : vehicules) {
-            if (v.isLouee()) nbLoué++;
+            if (v.isLouee()) nbLoue++;
         }
 
-        cl.setText(nbLoué + "");
+        cl.setText(nbLoue + "");
     }
 }
