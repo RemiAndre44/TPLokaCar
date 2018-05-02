@@ -79,12 +79,6 @@ public class ListeClientActivity extends ActivityWithMenu {
         });
     }
 
-                startActivity(intent);
-            }
-        });
-
-    }
-
     private void chargeListeClient(){
         adapterClient.clear();
         adapterClient.addAll(lstC);
