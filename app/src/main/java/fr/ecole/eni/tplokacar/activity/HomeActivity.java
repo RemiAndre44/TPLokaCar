@@ -41,4 +41,9 @@ public class HomeActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    public void onClickStats(View view) {
+        Intent intent = new Intent(HomeActivity.this, StatsActivity.class);
+        startActivity(intent);
+    }
 }

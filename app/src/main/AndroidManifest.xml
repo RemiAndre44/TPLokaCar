@@ -27,6 +27,7 @@
             android:exported="true" />
         <activity android:name=".activity.ListeClientActivity" />
         <activity android:name=".activity.DetailClientActivity"></activity>
+        <activity android:name=".activity.StatsActivity"></activity>
     </application>
 
 </manifest>
