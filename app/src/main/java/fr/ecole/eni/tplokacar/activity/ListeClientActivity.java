@@ -72,7 +72,7 @@ public class ListeClientActivity extends ActivityWithMenu {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(ListeClientActivity.this, CreateCarActivity.class);
+                Intent intent= new Intent(ListeClientActivity.this, CreateClientActivity.class);
 
                 startActivity(intent);
             }

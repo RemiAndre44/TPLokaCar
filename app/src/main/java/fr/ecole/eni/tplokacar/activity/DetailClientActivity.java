@@ -25,8 +25,30 @@ public class DetailClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_client);
 
-        //chargeDonnees();
+        chargeDonnees();
 
+
+    }
+
+    private void chargeDonnees(){
+
+        Intent intent= getIntent();
+        Client client= new Client();
+        client = intent.getParcelableExtra("selected");
+        Log.d("oups",client.toString());
+
+        nom = findViewById(R.id.nomC);
+        nom.setText(client.getNom());
+        prenom = findViewById(R.id.prenomC);
+        prenom.setText(client.getPrenom());
+        adresse = findViewById(R.id.adresseC);
+        adresse.setText(client.getAdresse());
+        codePostal = findViewById(R.id.codePostalC);
+        codePostal.setText(client.getCodePostal());
+        ville = findViewById(R.id.villeC);
+        ville.setText(client.getVille());
+        num = findViewById(R.id.numC);
+        num.setText("#"+Integer.toString(client.getId_client()) );
 
     }
 
