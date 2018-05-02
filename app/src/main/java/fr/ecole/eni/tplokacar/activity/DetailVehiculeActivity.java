@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
 import fr.ecole.eni.tplokacar.R;
 import fr.ecole.eni.tplokacar.database.entity.Vehicule;
 
-public class DetailVehiculeActivity extends AppCompatActivity {
+public class DetailVehiculeActivity extends ActivityWithMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +50,5 @@ public class DetailVehiculeActivity extends AppCompatActivity {
 
 
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //ajoute les entrées de menu_test à l'ActionBar
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    public void onClickHome(MenuItem item) {
-        Intent intent= new Intent(DetailVehiculeActivity.this, HomeActivity.class);
-
-        startActivity(intent);
     }
 }
