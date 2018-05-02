@@ -2,6 +2,7 @@ package fr.ecole.eni.tplokacar.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 
 import fr.ecole.eni.tplokacar.database.dao.ClientDAO;
 import fr.ecole.eni.tplokacar.database.dao.LocationDAO;
