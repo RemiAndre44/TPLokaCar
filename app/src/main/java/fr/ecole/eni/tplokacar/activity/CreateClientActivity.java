@@ -1,10 +1,8 @@
 package fr.ecole.eni.tplokacar.activity;
 
 import android.os.AsyncTask;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,7 +56,8 @@ public class CreateClientActivity extends AppCompatActivity {
         new SaveData().execute(client);
     }
 
-    private void cleanForm(){
+
+    public void cxlForm(View view) {
         nom.setText("");
         prenom.setText("");
         adresse.setText("");
@@ -80,7 +79,7 @@ public class CreateClientActivity extends AppCompatActivity {
             super.onPostExecute(s);
             Toast toast = Toast.makeText(getApplicationContext(),  s, Toast.LENGTH_SHORT);
             toast.show();
-            cleanForm();
+            cxlForm(findViewById(R.id.view));
         }
 
     }
