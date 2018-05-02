@@ -23,6 +23,7 @@
             android:background="@drawable/borderstat"
             android:text="@string/statistiques"
             android:textColor="@color/colorTxt"
+            android:onClick="onClickStats"
 
             />
 
