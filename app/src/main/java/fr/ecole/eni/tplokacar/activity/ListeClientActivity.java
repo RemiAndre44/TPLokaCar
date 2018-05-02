@@ -23,7 +23,7 @@ import fr.ecole.eni.tplokacar.database.LokaCarDB;
 import fr.ecole.eni.tplokacar.database.entity.Client;
 import fr.ecole.eni.tplokacar.database.entity.Vehicule;
 
-public class ListeClientActivity extends AppCompatActivity {
+public class ListeClientActivity extends ActivityWithMenu {
     private ListView lv;
     private List<Client> lstC;
     private String resultat;
@@ -66,19 +66,6 @@ public class ListeClientActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //ajoute les entrées de menu_test à l'ActionBar
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    public void onClickHome(MenuItem item) {
-        Intent intent= new Intent(ListeClientActivity.this, HomeActivity.class);
-
-        startActivity(intent);
     }
 
     private void chargeListeClient(){
