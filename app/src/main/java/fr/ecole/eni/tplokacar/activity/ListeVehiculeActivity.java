@@ -75,7 +75,7 @@ public class ListeVehiculeActivity extends ActivityWithMenu {
     private void chargeListe(){
         lv= findViewById(R.id.listView);
         AdapterVehicule adapterVehicule = new AdapterVehicule(ListeVehiculeActivity.this,
-                R.layout.item,
+                R.layout.item_liste_vehicule,
                 lstV);
 
         lv.setAdapter(adapterVehicule);

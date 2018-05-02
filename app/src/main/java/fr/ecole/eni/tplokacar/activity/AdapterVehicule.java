@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import fr.ecole.eni.tplokacar.R;
@@ -36,6 +38,7 @@ public class AdapterVehicule extends ArrayAdapter<Vehicule>{
 
             convertView = inflater.inflate(res,parent,false);
             holder= new ViewHolder();
+            holder.plaque = convertView.findViewById(R.id.plaque);
             holder.marque = convertView.findViewById(R.id.marque);
             holder.modele = convertView.findViewById(R.id.modele);
 
@@ -45,6 +48,7 @@ public class AdapterVehicule extends ArrayAdapter<Vehicule>{
         }
 
         Vehicule vehicule = getItem(position);
+        holder.plaque.setText(vehicule.getPlaque());
         holder.marque.setText(vehicule.getMarque());
         holder.modele.setText(vehicule.getModele());
 
@@ -52,6 +56,7 @@ public class AdapterVehicule extends ArrayAdapter<Vehicule>{
     }
 
     static class ViewHolder{
+        TextView plaque;
         TextView marque;
         TextView modele;
     }
