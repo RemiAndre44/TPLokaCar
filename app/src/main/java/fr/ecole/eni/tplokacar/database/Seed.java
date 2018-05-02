@@ -99,6 +99,7 @@ public class Seed extends AsyncTask<Void, Void, String> {
         loc.setClientId(pierre.getId_client());
         loc.setVehiculeId(pijot.getId_vehicule());
         loc.setDateDepart(new Date());
+        loc.setDuree(5);
 
         loc.setId_location( (int) db.locationDAO().insert(loc));
 

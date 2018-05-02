@@ -34,7 +34,7 @@ public class Location {
     private Date dateDepart;
     private int clientId;
     private int vehiculeId;
-
+    private int duree;
 
     public int getId_location() {
         return id_location;
@@ -77,13 +77,23 @@ public class Location {
         this.uniq_index = uniq_index;
     }
 
+    public int getDuree() {
+        return duree;
+    }
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
     @Override
     public String toString() {
         return "Location{" +
                 "id_location=" + id_location +
+                ", uniq_index='" + uniq_index + '\'' +
                 ", dateDepart=" + dateDepart +
                 ", clientId=" + clientId +
                 ", vehiculeId=" + vehiculeId +
+                ", duree=" + duree +
                 '}';
     }
 }

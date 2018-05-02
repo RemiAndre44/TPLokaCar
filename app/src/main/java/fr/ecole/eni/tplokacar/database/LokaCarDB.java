@@ -12,7 +12,7 @@ import fr.ecole.eni.tplokacar.database.entity.Location;
 import fr.ecole.eni.tplokacar.database.entity.Photo;
 import fr.ecole.eni.tplokacar.database.entity.Vehicule;
 
-@Database(entities = {Client.class, Location.class, Photo.class, Vehicule.class}, version = 3)
+@Database(entities = {Client.class, Location.class, Photo.class, Vehicule.class}, version = 4)
 public abstract class LokaCarDB extends RoomDatabase {
 
     public static final String DATABASE_NAME = "LokaCar";
