@@ -2,6 +2,7 @@ package fr.ecole.eni.tplokacar.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 
 import fr.ecole.eni.tplokacar.database.dao.ClientDAO;
 import fr.ecole.eni.tplokacar.database.dao.LocationDAO;
@@ -13,6 +14,7 @@ import fr.ecole.eni.tplokacar.database.entity.Photo;
 import fr.ecole.eni.tplokacar.database.entity.Vehicule;
 
 @Database(entities = {Client.class, Location.class, Photo.class, Vehicule.class}, version = 3)
+@TypeConverters({DateTypeConverter.class})
 public abstract class LokaCarDB extends RoomDatabase {
 
     public static final String DATABASE_NAME = "LokaCar";

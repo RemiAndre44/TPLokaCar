@@ -34,8 +34,7 @@ public class App extends Application {
                 .databaseBuilder(getApplicationContext(), LokaCarDB.class, LokaCarDB.DATABASE_NAME)
                 .fallbackToDestructiveMigration()
                 .build();
-
-       // new Seed().execute();
+        new Seed().execute();
 
         instance = this;
     }
