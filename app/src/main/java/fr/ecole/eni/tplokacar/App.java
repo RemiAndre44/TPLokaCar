@@ -35,7 +35,7 @@ public class App extends Application {
                 .fallbackToDestructiveMigration()
                 .build();
 
-        new Seed().execute();
+       // new Seed().execute();
 
         instance = this;
     }
