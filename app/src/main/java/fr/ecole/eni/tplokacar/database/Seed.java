@@ -19,7 +19,6 @@ public class Seed extends AsyncTask<Void, Void, String> {
         LokaCarDB db = App.get().getDB();
 
         Log.e("TEST", "Start seed");
-        db.beginTransaction();
 
         db.locationDAO().deleteAll();
         db.photoDAO().deleteAll();
@@ -43,9 +42,9 @@ public class Seed extends AsyncTask<Void, Void, String> {
         lucio.setAdresse("rue de la plume");
         lucio.setCodePostal("56 000");
         lucio.setVille("Vannes");
-        lucio.setId_client(3);
 
-        App.get().getDB().clientDAO().insert(lucio);
+
+        db.clientDAO().insert(lucio);
 
         // Create clients;
         Client jean = new Client();
@@ -54,9 +53,9 @@ public class Seed extends AsyncTask<Void, Void, String> {
         jean.setAdresse("rue des tombeurs");
         jean.setCodePostal("33 000");
         jean.setVille("Bordeaux");
-        jean.setId_client( 4);
 
-        App.get().getDB().clientDAO().insert(jean);
+
+        db.clientDAO().insert(jean);
 
         // Create clients;
         Client dooz = new Client();
@@ -65,9 +64,9 @@ public class Seed extends AsyncTask<Void, Void, String> {
         dooz.setAdresse("rue des étoiles du sol");
         dooz.setCodePostal("67 000");
         dooz.setVille("Strasbourg");
-        dooz.setId_client( 5);
 
-        App.get().getDB().clientDAO().insert(dooz);
+
+        db.clientDAO().insert(dooz);
 
         // Create vehicules
         Vehicule pijot = new Vehicule();
@@ -87,13 +86,7 @@ public class Seed extends AsyncTask<Void, Void, String> {
 
         loc.setId_location( (int) db.locationDAO().insert(loc));
 
-        db.endTransaction();
         Log.e("TEST", "end of seed");
-
-        Log.e("TEST", pierre.getId_client() + "");
-        Log.e("TEST", pijot.getId_vehicule() + "");
-        Log.e("TEST", loc.getId_location() + "");
-
 
         return null;
     }

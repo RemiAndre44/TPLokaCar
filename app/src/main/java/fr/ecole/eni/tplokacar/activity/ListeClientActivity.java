@@ -3,6 +3,7 @@ package fr.ecole.eni.tplokacar.activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,6 +63,16 @@ public class ListeClientActivity extends ActivityWithMenu {
                 Log.d("salut", selected.toString());
                 Intent intent= new Intent(ListeClientActivity.this, DetailClientActivity.class);
                 intent.putExtra("selected", selected);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(ListeClientActivity.this, CreateCarActivity.class);
+
                 startActivity(intent);
             }
         });
