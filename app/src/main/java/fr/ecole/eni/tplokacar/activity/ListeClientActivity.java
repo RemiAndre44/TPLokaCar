@@ -42,18 +42,7 @@ public class ListeClientActivity extends ActivityWithMenu {
                 R.layout.client,
                 lstC);
         lv.setAdapter(adapterClient);
-        final Thread thread = new Thread(){
-            public void run(){
-
-                lstC = App.get().getDB().clientDAO().getAll();
-                chargeListeClient();
-                Message msg = new Message();
-                msg.what = 1;
-                handler.sendMessage(msg);
-            }
-        };
-
-        thread.start();
+        loadClients();
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -79,11 +68,36 @@ public class ListeClientActivity extends ActivityWithMenu {
         });
     }
 
-    private void chargeListeClient(){
-        adapterClient.clear();
-        adapterClient.addAll(lstC);
-        adapterClient.notifyDataSetChanged();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadClients();
+    }
 
+    private void loadClients() {
+        final Thread thread = new Thread(){
+            public void run(){
+            lstC = App.get().getDB().clientDAO().getAll();
+            chargeListeClient();
+            Message msg = new Message();
+            msg.what = 1;
+            handler.sendMessage(msg);
+            }
+        };
+
+        thread.start();
+    }
+
+
+    private void chargeListeClient(){
+        runOnUiThread( new Runnable() {
+            @Override
+            public void run() {
+                adapterClient.clear();
+                adapterClient.addAll(lstC);
+                adapterClient.notifyDataSetChanged();
+            }
+        });
     }
 
     public void onClickRechercheClient(View view) {

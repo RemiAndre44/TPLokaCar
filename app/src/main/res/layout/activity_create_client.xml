@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:id="@+id/view">
 
     <TextView
@@ -23,7 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nom"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
     </LinearLayout>
 
     <LinearLayout
@@ -36,7 +40,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Prénom"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Adresse"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
     </LinearLayout>
 
     <LinearLayout
@@ -63,7 +71,9 @@
             android:layout_height="wrap_content"
             android:hint="Code postal"
             android:inputType="number"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
     </LinearLayout>
 
 
@@ -78,7 +88,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ville"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
     </LinearLayout>
 
     <LinearLayout
