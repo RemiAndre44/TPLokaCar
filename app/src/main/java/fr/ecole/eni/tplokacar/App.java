@@ -13,6 +13,7 @@ public class App extends Application {
 
     private static App instance;
     private LokaCarDB database;
+    private String password = "qsdf";
 
     public static App get() {
         return instance;
@@ -20,6 +21,10 @@ public class App extends Application {
 
     public LokaCarDB getDB() {
         return database;
+    }
+
+    public boolean isValidPassword(String pass) {
+        return this.password.equals(pass);
     }
 
     @Override
