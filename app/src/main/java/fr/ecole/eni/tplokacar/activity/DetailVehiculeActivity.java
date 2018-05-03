@@ -40,13 +40,13 @@ public class DetailVehiculeActivity extends ActivityWithMenu {
         plaque.setText(selected.getPlaque());
         TextView prix = findViewById(R.id.prixVehicule);
         prix.setText(Integer.toString((int) selected.getPrix())+" €");
-        TextView loue= findViewById(R.id.loue);
+       /* TextView loue= findViewById(R.id.loue);
         boolean estLoue = selected.isLouee();
         if(estLoue == true){
             loue.setText("Est loué");
         }else{
             loue.setText("A louer");
-        }
+        }*/
 
 
 

@@ -65,7 +65,8 @@
             android:layout_margin="5dp"
             android:background="@drawable/borderlocation"
             android:text="@string/locations"
-            android:textColor="@color/colorTxt"/>
+            android:textColor="@color/colorTxt"
+            android:onClick="createLocation"/>
 
     </LinearLayout>
 
