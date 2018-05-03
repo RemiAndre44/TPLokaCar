@@ -14,33 +14,89 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:textStyle="bold"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Clients de l'agence"/>
+        </LinearLayout>
 
-        <EditText
+
+        <!-- Recherche -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/recherche"
-            android:layout_weight="0.3"
-            android:id="@+id/resultatRecherche"/>
-        
-        <Button
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/recherche"
+                android:layout_weight="0.3"
+                android:id="@+id/resultatRecherche"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="recherche"
+                android:layout_weight="0.7"
+                android:onClick="onClickRechercheClient"/>
+        </LinearLayout>
+
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="recherche"
-            android:layout_weight="0.7"
-        android:onClick="onClickRechercheClient"/>
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="Nom"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="Prénom"/>
+            </LinearLayout>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/listViewClient">
+            </ListView>
+
+        </TableLayout>
+
+
+
+
+
+
 
     </LinearLayout>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listViewClient">
-
-    </ListView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -49,7 +105,5 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_input_add" />
-
-    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
