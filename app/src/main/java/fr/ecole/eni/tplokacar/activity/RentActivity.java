@@ -4,16 +4,21 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -30,12 +35,16 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
     private Date dateFin;
     private Calendar calendar;
     private TextView nbreJours;
+    private Spinner spinner;
+    private List<Vehicule> listeVehicules;
+    private MonHandler handler = new MonHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rent);
         this.nbreJours =  findViewById(R.id.nbreJours);
+        this.spinner = findViewById(R.id.spinner);
     }
 
     /**
@@ -54,7 +63,10 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
         calendar.add(calendar.DATE, nbreJours);
         this.dateFin =   calendar.getTime();
         Log.d("tog", "setDate: "+ dateFormat.format(this.dateFin));
-        new getVehiclesAsync().execute();
+
+        getVehiclesAsync asyncTask = new getVehiclesAsync();
+        asyncTask.execute();
+
 
     }
 
@@ -109,10 +121,8 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
 
         @Override
         protected String doInBackground(Vehicule... vehicule) {
-            List<Vehicule> liste =  App.get().getDB().vehiculeDAO().getAvailableVehicles(dateDebut, dateFin);
-            for(Vehicule v : liste){
-                Log.d("tog", "getVehicles: "+v);
-            }
+            listeVehicules =  App.get().getDB().vehiculeDAO().getAvailableVehicles(dateDebut, dateFin);
+
             return "le véhicule est bien enregistré";
         }
 
@@ -120,11 +130,51 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Toast toast = Toast.makeText(getApplicationContext(),  s, Toast.LENGTH_SHORT);
-            toast.show();
+
+            Message msg = new Message();
+            msg.what = 1;
+
+            handler.sendMessage(msg);
+
         }
 
     }
 
+
+
+    private class MonHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what){
+                case 1 :
+                   fillSpinner();
+                    break;
+
+            }
+
+
+        }
+    }
+
+    private void fillSpinner() {
+
+        List<String> spinnerList = new ArrayList<String>();
+
+        for(Vehicule v : listeVehicules){
+            spinnerList.add(v.getMarque() + " | " + v.getModele() );
+        }
+
+
+        ArrayAdapter adapter = new ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                spinnerList
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+    }
 
 }
