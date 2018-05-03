@@ -114,7 +114,10 @@ public class CreateCarActivity extends ActivityWithMenu {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             displayActionResult(s);
-            cxlForm(findViewById(R.id.view));
+
+            if (s.equals("le véhicule est bien enregistré")) {
+                CreateCarActivity.this.finish();
+            }
         }
     }
 }

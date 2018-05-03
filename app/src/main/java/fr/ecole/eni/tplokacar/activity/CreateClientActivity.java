@@ -80,6 +80,8 @@ public class CreateClientActivity extends ActivityWithMenu {
             Toast toast = Toast.makeText(getApplicationContext(),  s, Toast.LENGTH_SHORT);
             toast.show();
             cxlForm(findViewById(R.id.view));
+
+            CreateClientActivity.this.finish();
         }
 
     }
