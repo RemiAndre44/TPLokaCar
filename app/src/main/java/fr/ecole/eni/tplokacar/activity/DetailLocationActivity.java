@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.provider.MediaStore.Images.Media;
 
+import java.text.DateFormat;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,7 @@ public class DetailLocationActivity extends ActivityWithMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("salop","yo4");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_location);
 
@@ -84,9 +86,13 @@ public class DetailLocationActivity extends ActivityWithMenu {
         immatriculationVehicule = findViewById(R.id.imatVehiculeLocation);
         immatriculationVehicule.setText(vehicule.getPlaque());
         nbPlacesVehicule = findViewById(R.id.nbPlacesVehiculeLocation);
-        nbPlacesVehicule.setText(vehicule.getNbrePlaces());
+        nbPlacesVehicule.setText(Integer.toString(vehicule.getNbrePlaces()));
         dateDepartLocation = findViewById(R.id.dateDepartVehiculeLocation);
-        //dateDepartLocation.setText(Integer.toString(location.getDateDepart()));
+        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+
+        dateDepartLocation.setText(dateFormat.format(location.getDateDepart()));
+
+        Log.d("tog", "chargementDonnee: "+location.getDateDepart());
         dureeLocation = findViewById(R.id.dureeVehiculeLocation);
         dureeLocation.setText(Integer.toString(location.getDuree()));
 

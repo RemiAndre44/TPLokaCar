@@ -153,4 +153,9 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(HomeActivity.this, StatsActivity.class);
         startActivity(intent);
     }
+
+    public void createLocation(View view) {
+        Intent intent= new Intent(HomeActivity.this, RentActivity.class);
+        startActivity(intent);
+    }
 }

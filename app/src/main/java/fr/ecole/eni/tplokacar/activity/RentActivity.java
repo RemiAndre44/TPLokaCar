@@ -251,7 +251,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void getDetailLocation() {
-        Intent intent= new Intent(RentActivity.this, DetailClientActivity.class);
+        Intent intent= new Intent(RentActivity.this, DetailLocationActivity.class);
         intent.putExtra("client", selectedClient);
         intent.putExtra("voiture", selectedVehicle);
         intent.putExtra("location" , location);

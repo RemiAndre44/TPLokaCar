@@ -44,6 +44,7 @@ public class Location implements Parcelable {
         clientId = in.readInt();
         vehiculeId = in.readInt();
         duree = in.readInt();
+        dateDepart = new Date(in.readLong());
     }
 
     public Location(){
@@ -137,4 +138,6 @@ public class Location implements Parcelable {
         dest.writeInt(duree);
         dest.writeLong(dateDepart.getTime());
     }
+
+
 }
