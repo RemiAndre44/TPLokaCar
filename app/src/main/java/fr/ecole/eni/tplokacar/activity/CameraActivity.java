@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -15,16 +17,22 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import android.provider.MediaStore.Images.Media;
 
+import fr.ecole.eni.tplokacar.App;
 import fr.ecole.eni.tplokacar.R;
+import fr.ecole.eni.tplokacar.database.entity.Photo;
 
 public class CameraActivity extends Activity implements SurfaceHolder.Callback{
     private Camera camera;
     private SurfaceView surfaceCamera;
     private Boolean isPreview;
+    private FileOutputStream stream;
 
 
     @Override
@@ -126,10 +134,65 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback{
     }
 
     private void SavePicture() {
-        Intent intent = new Intent(CameraActivity.this, DetailLocationActivity.class);
 
-        startActivity(intent);
-        Toast.makeText(CameraActivity.this,"Votre photo est bien enregistrée", Toast.LENGTH_SHORT).show();
+        try {
+            SimpleDateFormat timeStampFormat = new SimpleDateFormat(
+                    "yyyy-MM-dd-HH.mm.ss");
+            String fileName = "photo_" + timeStampFormat.format(new Date())
+                    + ".jpg";
+
+            // Metadata pour la photo
+            ContentValues values = new ContentValues();
+            values.put(Media.TITLE, fileName);
+            values.put(Media.DISPLAY_NAME, fileName);
+            values.put(Media.DESCRIPTION, "Image prise par FormationCamera");
+            values.put(Media.DATE_TAKEN, new Date().getTime());
+            values.put(Media.MIME_TYPE, "image/jpeg");
+
+            // Support de stockage
+            Uri taken = getContentResolver().insert(Media.EXTERNAL_CONTENT_URI,
+                    values);
+
+            // Ouverture du flux pour la sauvegarde
+            stream = (FileOutputStream) getContentResolver().openOutputStream(
+                    taken);
+
+            camera.takePicture(null, pictureCallback, pictureCallback);
+
+            Intent intent = new Intent(CameraActivity.this, DetailLocationActivity.class);
+            intent.putExtra("values", values);
+            startActivity(intent);
+            Toast.makeText(CameraActivity.this,"Votre photo est bien enregistrée", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+
+
     }
+
+    Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
+
+        public void onPictureTaken(byte[] data, Camera camera) {
+            if (data != null) {
+                // Enregistrement de votre image
+                try {
+                    if (stream != null) {
+                        stream.write(data);
+                        stream.flush();
+                        stream.close();
+                    }
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+
+                // Nous redémarrons la prévisualisation
+                camera.startPreview();
+            }
+        }
+    };
+
+
+
 
 }

@@ -1,10 +1,13 @@
 package fr.ecole.eni.tplokacar.activity;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
+import android.provider.MediaStore.Images.Media;
 
 import fr.ecole.eni.tplokacar.R;
 import fr.ecole.eni.tplokacar.database.entity.Client;
@@ -22,8 +25,12 @@ public class DetailLocationActivity extends ActivityWithMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("salop","yo4");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_location);
+
+        ContentResolver photoResolver = getContentResolver();
+        Uri photoUri = Media.EXTERNAL_CONTENT_URI;
 
 
     }
@@ -53,6 +60,24 @@ public class DetailLocationActivity extends ActivityWithMenu {
         dureeLocation.setText(Integer.toString(location.getDuree()));
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("salop", "yo1");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("salop", "yo2");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("salop", "yo3");
     }
 
     public void onClickCamDepart(View view) {
