@@ -27,7 +27,7 @@
             android:hint="Nom"
             android:padding="10dp"
             android:singleLine="true"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionNext"/>
     </LinearLayout>
 
     <LinearLayout
@@ -42,7 +42,7 @@
             android:hint="Prénom"
             android:padding="10dp"
             android:singleLine="true"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionNext"/>
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +57,7 @@
             android:hint="Adresse"
             android:padding="10dp"
             android:singleLine="true"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionNext"/>
     </LinearLayout>
 
     <LinearLayout
@@ -71,9 +71,7 @@
             android:layout_height="wrap_content"
             android:hint="Code postal"
             android:inputType="number"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:imeOptions="actionDone"/>
+            android:padding="10dp" />
     </LinearLayout>
 
 
