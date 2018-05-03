@@ -1,10 +1,13 @@
 package fr.ecole.eni.tplokacar.activity;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
+import android.provider.MediaStore.Images.Media;
 
 import fr.ecole.eni.tplokacar.R;
 import fr.ecole.eni.tplokacar.database.entity.Client;
@@ -22,20 +25,25 @@ public class DetailLocationActivity extends ActivityWithMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("salop","yo4");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_location);
 
+        ContentResolver photoResolver = getContentResolver();
+        Uri photoUri = Media.EXTERNAL_CONTENT_URI;
+
+        chargementDonnee();
 
     }
 
     public void chargementDonnee(){
         Intent intent =getIntent();
         Client client = new Client();
-        client= intent.getParcelableExtra("");
+        client= intent.getParcelableExtra("client");
         Vehicule vehicule = new Vehicule();
-        vehicule = intent.getParcelableExtra("");
+        vehicule = intent.getParcelableExtra("voiture");
         Location location = new Location();
-        location = intent.getParcelableExtra("");
+        location = intent.getParcelableExtra("location");
 
         nomClient = findViewById(R.id.nomClientLocation);
         nomClient.setText(client.getNom()+"#"+client.getId_client());
@@ -54,6 +62,17 @@ public class DetailLocationActivity extends ActivityWithMenu {
 
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
 
     public void onClickCamDepart(View view) {
         Intent intent = new Intent(DetailLocationActivity.this, CameraActivity.class);
