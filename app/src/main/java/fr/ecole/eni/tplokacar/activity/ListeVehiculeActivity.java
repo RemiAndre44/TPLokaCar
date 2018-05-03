@@ -33,16 +33,7 @@ public class ListeVehiculeActivity extends ActivityWithMenu {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        lstV= new ArrayList<Vehicule>();
-
-
-        final Thread thread= new Thread(){
-            public void run(){
-                lstV =App.get().getDB().vehiculeDAO().selectAll();
-                chargeListe();
-            }
-        };
-        thread.start();
+        loadList();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,13 +62,36 @@ public class ListeVehiculeActivity extends ActivityWithMenu {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadList();
+    }
+
+
+    private void loadList() {
+        lstV= new ArrayList<Vehicule>();
+        final Thread thread= new Thread(){
+            public void run(){
+                lstV = App.get().getDB().vehiculeDAO().selectAll();
+                chargeListe();
+            }
+        };
+        thread.start();
+    }
 
     private void chargeListe(){
-        lv= findViewById(R.id.listView);
-        AdapterVehicule adapterVehicule = new AdapterVehicule(ListeVehiculeActivity.this,
-                R.layout.item_liste_vehicule,
-                lstV);
+        runOnUiThread( new Runnable() {
 
-        lv.setAdapter(adapterVehicule);
+            @Override
+            public void run() {
+                lv= findViewById(R.id.listView);
+                lv.setAdapter( new AdapterVehicule(
+                    ListeVehiculeActivity.this,
+                    R.layout.item_liste_vehicule,
+                    lstV
+                ));
+            }
+        });
     }
 }
