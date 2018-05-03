@@ -2,12 +2,19 @@ package fr.ecole.eni.tplokacar.activity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.provider.MediaStore.Images.Media;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.ecole.eni.tplokacar.R;
 import fr.ecole.eni.tplokacar.database.entity.Client;
@@ -32,7 +39,30 @@ public class DetailLocationActivity extends ActivityWithMenu {
         ContentResolver photoResolver = getContentResolver();
         Uri photoUri = Media.EXTERNAL_CONTENT_URI;
 
-        chargementDonnee();
+        //chargementDonnee();
+
+        List<String> lstKeys = new ArrayList<>();
+
+        File liste_file=new File(Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_PICTURES).getAbsolutePath());
+
+        Log.d("salut",liste_file.toString());
+
+        ContentResolver photoResolver1 = getContentResolver();
+        Uri photoUri1 = Media.EXTERNAL_CONTENT_URI;
+
+        String selection = Media.IS_PRIVATE + " != 0";
+
+        String[] projection = {
+                Media.DESCRIPTION,
+                Media.MIME_TYPE,
+                Media.DATE_TAKEN,
+                Media.TITLE,
+                Media.DISPLAY_NAME
+        };
+
+        Cursor photoCursor = photoResolver1.query(photoUri1, projection, selection, null, null);
+
+        Log.i("photo", "Nombre photos : " + photoCursor.getCount());
 
     }
 
