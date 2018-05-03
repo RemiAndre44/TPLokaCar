@@ -32,17 +32,18 @@ public class DetailLocationActivity extends ActivityWithMenu {
         ContentResolver photoResolver = getContentResolver();
         Uri photoUri = Media.EXTERNAL_CONTENT_URI;
 
+        chargementDonnee();
 
     }
 
     public void chargementDonnee(){
         Intent intent =getIntent();
         Client client = new Client();
-        client= intent.getParcelableExtra("");
+        client= intent.getParcelableExtra("client");
         Vehicule vehicule = new Vehicule();
-        vehicule = intent.getParcelableExtra("");
+        vehicule = intent.getParcelableExtra("voiture");
         Location location = new Location();
-        location = intent.getParcelableExtra("");
+        location = intent.getParcelableExtra("location");
 
         nomClient = findViewById(R.id.nomClientLocation);
         nomClient.setText(client.getNom()+"#"+client.getId_client());
@@ -65,20 +66,13 @@ public class DetailLocationActivity extends ActivityWithMenu {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("salop", "yo1");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("salop", "yo2");
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("salop", "yo3");
-    }
 
     public void onClickCamDepart(View view) {
         Intent intent = new Intent(DetailLocationActivity.this, CameraActivity.class);

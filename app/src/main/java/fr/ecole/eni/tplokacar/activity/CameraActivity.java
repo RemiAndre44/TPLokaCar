@@ -1,8 +1,10 @@
 package fr.ecole.eni.tplokacar.activity;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.net.Uri;
@@ -21,7 +23,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import android.provider.MediaStore.Images.Media;
 
 import fr.ecole.eni.tplokacar.App;
@@ -61,6 +66,10 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback{
                 }
             }
         });
+
+
+
+
     }
 
     @Override

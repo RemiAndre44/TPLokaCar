@@ -1,8 +1,12 @@
 package fr.ecole.eni.tplokacar.activity;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -77,6 +81,25 @@ public class ListeClientActivity extends ActivityWithMenu {
                 startActivity(intent);
             }
         });
+
+        List<String> lstKeys = new ArrayList<>();
+
+        ContentResolver photoResolver = getContentResolver();
+        Uri photoUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+
+        String selection = MediaStore.Images.Media.IS_PRIVATE + " != 0";
+
+        String[] projection = {
+                MediaStore.Images.Media.DESCRIPTION,
+                MediaStore.Images.Media.MIME_TYPE,
+                MediaStore.Images.Media.DATE_TAKEN,
+                MediaStore.Images.Media.TITLE,
+                MediaStore.Images.Media.DISPLAY_NAME
+        };
+
+        Cursor photoCursor = photoResolver.query(photoUri, projection, selection, null, null);
+
+        Log.i("photo", "Nombre photos : " + photoCursor.getCount());
     }
 
     private void chargeListeClient(){
