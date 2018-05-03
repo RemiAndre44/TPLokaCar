@@ -39,7 +39,6 @@ public class AdapterVehicule extends ArrayAdapter<Vehicule>{
             convertView = inflater.inflate(res,parent,false);
             holder= new ViewHolder();
             holder.plaque = convertView.findViewById(R.id.plaque);
-            holder.marque = convertView.findViewById(R.id.marque);
             holder.modele = convertView.findViewById(R.id.modele);
 
             convertView.setTag(holder);
@@ -49,15 +48,13 @@ public class AdapterVehicule extends ArrayAdapter<Vehicule>{
 
         Vehicule vehicule = getItem(position);
         holder.plaque.setText(vehicule.getPlaque());
-        holder.marque.setText(vehicule.getMarque());
-        holder.modele.setText(vehicule.getModele());
+        holder.modele.setText(vehicule.getDisplayedName());
 
         return convertView;
     }
 
     static class ViewHolder{
         TextView plaque;
-        TextView marque;
         TextView modele;
     }
 }

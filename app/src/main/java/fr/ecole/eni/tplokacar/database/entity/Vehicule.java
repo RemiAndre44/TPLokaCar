@@ -48,6 +48,10 @@ public class Vehicule implements Parcelable{
         
     }
 
+    public String getDisplayedName() {
+        return this.getMarque() + " - " + this.getModele();
+    }
+
     public int getId_vehicule() {
         return id_vehicule;
     }
