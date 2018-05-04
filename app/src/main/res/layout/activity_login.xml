@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="#333"
+            android:textColor="#444"
             android:text="lo"
             android:textSize="25dp" />
 
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#333"
-            android:text="r.io"
+            android:text="r"
             android:textSize="25dp" />
 
     </LinearLayout>
