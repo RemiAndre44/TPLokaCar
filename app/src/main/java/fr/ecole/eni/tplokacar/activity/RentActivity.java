@@ -182,17 +182,17 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
         ((TextView) findViewById(R.id.showDate)).setText(dateFormat.format(this.dateDebut));
     }
 
-    private class getVehiclesAsync extends AsyncTask<Vehicule, Integer, String> {
+    private class getVehiclesAsync extends AsyncTask<Void, Integer, Void> {
 
         @Override
-        protected String doInBackground(Vehicule... vehicule) {
+        protected Void doInBackground(Void... voids) {
             listeVehicules =  App.get().getDB().vehiculeDAO().getAvailableVehicles(dateDebut, dateFin);
-            return "";
+            return null;
         }
 
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(Void s) {
             super.onPostExecute(s);
 
             Message msg = new Message();
